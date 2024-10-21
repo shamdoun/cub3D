@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 1024/09/210 19:32:104 by shamdoun          #+#    #+#             */
-/*   Updated: 1024/10/11 19:103:03 by shamdoun         ###   ########.fr       */
+/*   Created: 2024/10/21 20:00:09 by shamdoun          #+#    #+#             */
+/*   Updated: 2024/10/21 20:00:12 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,20 @@ int	wall_contact(t_player *p, char **mapValues)
 		|| get_map_value(mapValues, p, 10, 10))
 		return (1);
 	return (0);
+}
+
+int	row_empty(char *s)
+{
+	int	i;
+	int	empty;
+
+	i = 0;
+	empty = 1;
+	while (s[i])
+	{
+		if (s[i] != ' ' && s[i] != 9)
+			empty = 0;
+		i++;
+	}
+	return (empty);
 }

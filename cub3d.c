@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:53:35 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/16 19:35:27 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:58:47 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	start_game(t_map *data)
 		exit (1);
 	}
 	init_all_values(map, data);
-	draw_mini_map(map, data->map, 1);
+	draw_mini_map(map);
 	if (mlx_image_to_window(map->interface->mlx_ptr,
 			map->interface->new_img, 0, 0))
 		free_all_exit(map, data);

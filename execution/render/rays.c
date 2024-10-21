@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:10:01 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/20 17:39:17 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:00:01 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ray_is_facing_left(double angle)
 
 void	apply_dda_algorithm(t_map_e *m)
 {
-	// long	h_distance;
-	// long	v_distance;
 	double	a_begin;
 	double	a_end;
 	double	steps;
@@ -45,10 +43,7 @@ void	apply_dda_algorithm(t_map_e *m)
 	steps = 60.0 / (21 * 10);
 	while (a_begin > a_end)
 	{
-		// h_distance = find_horizontal_distance(m, NULL, a_begin);
-		// v_distance = find_vertical_distance(m, NULL, a_begin);
-		// draw_line(m, a_begin, find_min(h_distance, v_distance));
-		draw_line(m, a_begin, 40);
+		draw_line(m, a_begin, 25);
 		a_begin -= steps;
 	}
 }
