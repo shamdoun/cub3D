@@ -37,6 +37,11 @@ fclean: clean
 	@${RM} ${NAME}
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 
+push:
+	@git add .
+	@git commit -m "hello"
+	@git push
+
 re: fclean all
 
 .PHONY : clean
