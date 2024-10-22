@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/20 18:33:46 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:12:24 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include <unistd.h>
+# include <stdio.h>
 # include <math.h>
 # include <fcntl.h>
 # include "sources/get_next_line/get_next_line.h"
@@ -21,7 +22,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include "MLX42/include/MLX42/MLX42.h"
-# include "parssing/parssing.h"
+
 
 # define BLOCK_W 64
 # define BLOCK_L 64
@@ -31,6 +32,17 @@
 # define W_WIDTH 20
 # define FOV 60
 # define BORDER_WIDTH 4
+
+typedef struct s_map
+{
+	char	**map;
+	char	*no;
+	char	*so;
+	char	*ea;
+	char	*we;
+	char	*f;
+	char	*c;
+}	t_map;
 
 typedef struct mlx_v
 {
@@ -190,4 +202,49 @@ void	free_all_exit(t_map_e *map, t_map *data);
 void	close_function(void *param);
 void	allocate_cal_struc(t_ray_calc	**cal);
 double ft_fabs(double value);
+
+int	mouvement_is_blocked_D(char **mapValues, int map_y, int map_x, double angle);
+void open_door(struct mlx_key_data key, void *param);
+
+int		parsse_args(char *str);
+t_map	*parssing(int arc, char **arv);
+char	**allocate_all_lines(int fd, char **arv);
+char	**parsse_all_lines(char **str);
+char	**allocate_str(char **str);
+void	parsse_textures(char **str, t_map *textures);
+t_map	*allocate_textures(void);
+void	put_0_1(char **str, t_map *textures);
+int		count_map(char **str);
+char	**allocate_map(int i);
+void	check_map(char **str);
+char	*escape_spaces(char *str);
+int		check_map_valid(char **map);
+void	print_textures(t_map *textures);
+void	free_all_lines(char **all_lines);
+void	free_map(t_map *Map);
+void	check_valid_for0(char **all_lines, t_map *textures, int i, int k);
+void	check_valid_for_player(char **all_lines, t_map *textures, int i, int k);
+void	check_end_line(char **all_lines, t_map *textures, int k);
+void	protecte_map(char **all_lines, t_map *textures, int i, int k);
+void	check_empty_line(char **all_lines, t_map *textures);
+void	parsse_map(char **all_lines, t_map *textures);
+void	check_dup(char **all_lines, t_map *textures);
+void	manage_error(char **str, t_map *textures);
+void	put_c(char **str, t_map *textures);
+void	put_0_1(char **str, t_map *textures);
+void	parsse_textures(char **str, t_map *textures);
+char	*escape_spaces(char *str);
+char	*put_map(char *str, int plus);
+void	put_so(char **str, t_map *textures);
+void	put_no(char **str, t_map *textures);
+void	put_we(char **str, t_map *textures);
+void	put_ea(char **str, t_map *textures);
+void	put_f(char **str, t_map *textures);
+void	check_dup(char **all_lines, t_map *textures);
+void	protecte_map(char **all_lines, t_map *textures, int i, int k);
+void	check_f_c(char **str, t_map *textures);
+void	continue_check_f_c(char **str, t_map *textures, char *s);
+void	continue_f_c(char **str, t_map *textures, char *s, int *j);
+char	*ft_copy(char *str, size_t start, size_t end);
+
 #endif

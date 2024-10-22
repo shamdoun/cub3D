@@ -6,11 +6,11 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 11:15:31 by haalouan          #+#    #+#             */
-/*   Updated: 2024/09/20 16:55:00 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/16 18:06:20 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
+#include "../cub3d.h"
 
 void	free_all_lines(char **all_lines)
 {

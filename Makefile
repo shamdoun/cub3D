@@ -16,7 +16,7 @@ LIBFT_DIR = sources/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ${MLX_FLAGS} ${MLX_LIB} -Iinclude -lglfw -L"/Users/shamdoun/.brew/opt/glfw/lib/" -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ${MLX_FLAGS} ${MLX_LIB} -Iinclude -lglfw -L"/Users/haalouan/.brew/opt/glfw/lib/" -o $(NAME)
 	@echo "Cub3d is ready"
 
 all: ${NAME}
