@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_calc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:23:50 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 18:58:56 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:13:22 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ double	find_horizontal_distance(t_map_e *m, t_ray **h, double angle)
 		map_x = (int)floor((ft_fabs(x_inter)) / BLOCK_W);
 		map_y = (int)floor(ft_fabs(y_inter) / BLOCK_L);
 		if (map_x < m->width && map_y < m->height
-			&& mouvement_is_blocked(m->m_values, map_y, map_x, angle))
+			&& mouvement_is_blocked(m, map_y, map_x, angle))
 			break ;
 		x_inter = x_inter + horiz->ax;
 		y_inter = y_inter + horiz->ay;

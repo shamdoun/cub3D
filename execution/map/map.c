@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 20:00:09 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 20:00:12 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:15:04 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	get_map_value(char **mapValues, t_player *p, int x, int y)
 
 	v = mapValues[(int)floor((p->y_p + y)
 			/ BLOCK_L)][(int)floor((p->x_p + x) / BLOCK_L)];
-	if (v == '1')
+	if (v == '1' || v == 'D')
 		return (1);
 	return (0);
 }

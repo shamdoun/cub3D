@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   drawing_algorithms.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 20:18:30 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 18:58:38 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:10:25 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,13 @@ static t_ray	*find_distance(t_map_e *m, double a_begin)
 		v_ray = ft_lstnew(a_begin);
 		if (!v_ray)
 			exit(1);
+		m->flag = 0;
+		m->open = 0;
 	}
 	else
 	{
+		m->flag = 0;
+		// m->open = 0;
 		h_ray->angle = a_begin;
 		v_ray->angle = a_begin;
 	}
@@ -70,6 +74,10 @@ void	draw_all_walls(t_map_e *m, t_wall *w)
 	while (a_begin > a_end)
 	{
 		r = find_distance(m, a_begin);
+		// if (m->flag && r < 60)
+		// {
+			
+		// }
 		render_wall(m, r, w, x);
 		a_begin -= steps;
 		x += 1;

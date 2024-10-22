@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   mouvements.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:56:03 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/20 20:36:43 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:14:03 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-int	mouvement_is_blocked(char **mapValues, int map_y, int map_x, double angle)
+int	mouvement_is_blocked(t_map_e *m, int map_y, int map_x, double angle)
 {
-	int	len;
 	int	h;
 
 	h = 0;
-	while (mapValues[h])
+	while (m->m_values[h])
 		h++;
-	len = ft_strlen(mapValues[map_y]);
-	if (map_x >= len - 1)
+	if ((size_t)map_x >= ft_strlen(m->m_values[map_y]) - 1)
 		return (1);
-	if ((mapValues[map_y][map_x] == '1') || (!ray_is_facing_down(angle)
-			&& ray_is_facing_left(angle) && (mapValues[map_y][map_x + 1] == '1')
+	if (mouvement_is_blocked_d(m, map_y, map_x, angle))
+		return (1);
+	if ((m->m_values[map_y][map_x] == '1') || (!ray_is_facing_down(angle)
+			&& ray_is_facing_left(angle) && (m->m_values[map_y][map_x + 1] == '1')
 					&& (((map_y + 1) < h)
-					&& (map_x < ((int)ft_strlen(mapValues[map_y + 1]))))
-					&& (mapValues[map_y + 1][map_x] == '1')) ||
+					&& (map_x < ((int)ft_strlen(m->m_values[map_y + 1]))))
+					&& (m->m_values[map_y + 1][map_x] == '1')) ||
 		(!ray_is_facing_down(angle) && !ray_is_facing_left(angle)
-				&& (mapValues[map_y][map_x - 1] == '1')
+				&& (m->m_values[map_y][map_x - 1] == '1')
 				&& ((map_y + 1) < h
-				&& (map_x < (int)ft_strlen(mapValues[map_y + 1])))
-				&& (mapValues[map_y + 1][map_x] == '1')) ||
+				&& (map_x < (int)ft_strlen(m->m_values[map_y + 1])))
+				&& (m->m_values[map_y + 1][map_x] == '1')) ||
 		(ray_is_facing_down(angle) && ray_is_facing_left(angle)
-				&& (mapValues[map_y][map_x + 1] == '1')
-				&& (mapValues[map_y - 1][map_x] == '1')))
+				&& (m->m_values[map_y][map_x + 1] == '1')
+				&& (m->m_values[map_y - 1][map_x] == '1')))
 		return (1);
 	return (0);
 }

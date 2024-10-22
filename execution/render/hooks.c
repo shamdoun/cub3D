@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 22:13:10 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 19:58:59 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 22:52:07 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,19 @@ void	key_func(void *param)
 		move_down(m->player, m->m_values);
 	if (mlx_is_key_down(m->interface->mlx_ptr, MLX_KEY_ESCAPE))
 		terminate_game(m);
+	mlx_key_hook(m->interface->mlx_ptr, open_door, m);	
 	update_map(m);
+}
+void open_door(struct mlx_key_data key, void *param)
+{
+	t_map_e	*m;
+
+	m = (t_map_e *)param;
+	if (key.key == MLX_KEY_SPACE && key.action == MLX_RELEASE)
+	{
+		if (m->open && m->flag)
+			m->open = 0;
+		else if (m->open == 0 && m->flag)
+			m->open = 1;
+	}
 }

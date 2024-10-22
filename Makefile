@@ -3,7 +3,8 @@ SRCS = cub3d.c ./parssing/parssing.c ./sources/get_next_line/get_next_line.c ./p
 	./parssing/free.c execution/render/texture.c ./execution/free_resources.c\
 	execution/player/mouvements.c execution/player/player.c execution/render/render.c execution/render/hooks.c  \
  	execution/raycasting/drawing_algorithms.c execution/render/walls.c execution/render/rays.c execution/init.c \
-	execution/raycasting/horizontal_calc.c execution/map/miniMap.c execution/render/line.c execution/raycasting/vertical_calc.c execution/map/map.c 
+	execution/raycasting/horizontal_calc.c execution/map/miniMap.c execution/render/line.c execution/raycasting/vertical_calc.c \
+	execution/map/map.c execution/door.c 
 MLX_LIB = MLX42/build/libmlx42.a 
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 OBJS = ${SRCS:.c=.o}
