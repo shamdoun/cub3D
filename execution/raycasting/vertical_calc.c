@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:27:55 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/22 22:33:20 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:49:35 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ double	find_vertical_distance(t_map_e *m, t_ray **v, double angle)
 		x_inter = x_inter + vertical->ax;
 		y_inter = y_inter + vertical->ay;
 	}
+	m->my_x = x_inter;
+	m->my_y = y_inter;
 	if (v)
 		(*v)->bitmap_offset = y_inter;
 	return (calculate_magnitude(m->player, x_inter, y_inter));

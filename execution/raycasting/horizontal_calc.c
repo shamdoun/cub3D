@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:23:50 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/22 23:13:22 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:49:46 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ double	find_horizontal_distance(t_map_e *m, t_ray **h, double angle)
 		x_inter = x_inter + horiz->ax;
 		y_inter = y_inter + horiz->ay;
 	}
+	m->my_x = x_inter;
+	m->my_y = y_inter;
 	if (h)
 		(*h)->bitmap_offset = x_inter;
 	return (calculate_magnitude(m->player, x_inter, y_inter));

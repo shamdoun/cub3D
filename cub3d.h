@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/22 22:31:25 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/22 23:51:05 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct map_v
 	char					*type;
 	int						flag;
 	int						open;
+	int						click;
 	struct mlx_v			*interface;
 	int						**map_values;
 	char					**m_values;
@@ -103,6 +104,9 @@ typedef struct map_v
 	uint32_t				floor;
 	uint32_t				ceiling;
 	struct minimap_v		*minimap;
+	int						my_x;
+	int						dis;
+	int						my_y;
 }	t_map_e;
 
 typedef struct ray_v
@@ -111,6 +115,8 @@ typedef struct ray_v
 	int					hit_vertical;
 	double				angle;
 	double				x;
+	double				my_y;
+	double				my_x;
 	double				bitmap_offset;
 	double				tan;
 	struct ray_v		*next;
