@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 20:18:30 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/20 17:13:00 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:58:38 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,32 +22,11 @@ void	update_angle(double *angle)
 
 static t_ray	*shortest_distance(t_ray *v_ray, t_ray *h_ray)
 {
-	// double directionX, directionY;
-
-	// update_angle(&h_ray->angle);
 	if ((v_ray->distance) >= (h_ray->distance))
 	{
 		h_ray->hit_vertical = 0;
 		return (h_ray);
 	}
-	// if (h_ray->distance == v_ray->distance)
-	// {
-	// 	directionX = cos(h_ray->angle * M_PI / 180) * h_ray->x;	
-	// 	if (h_ray->angle >= 0 && h_ray->angle < 180)
-	// 		directionY = sin(h_ray->angle * M_PI / 180);	
-	// 	else
-	// 		directionY = sin(-h_ray->angle * M_PI / 180);	
-	// 	 if ((directionY > directionX))
-	// 	 {
-	// 		v_ray->hit_vertical = 1;
-	// 		return (v_ray);			
-	// 	 }
-	// 	 else
-	// 	 {
-	// 		h_ray->hit_vertical = 0;
-	// 		return (h_ray);
-	// 	 }
-	// }
 	v_ray->hit_vertical = 1;
 	return (v_ray);
 }

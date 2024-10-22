@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/22 15:12:24 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:24:08 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@
 # define BLOCK_W 64
 # define BLOCK_L 64
 # define W_HEIGHT 20
-# define M_M_H 4
-# define M_M_W 4
+# define M_M_H 6
+# define M_M_W 6
 # define W_WIDTH 20
 # define FOV 60
 # define BORDER_WIDTH 4
@@ -82,6 +82,8 @@ typedef struct player_v
 {
 	double	x_p;
 	double	y_p;
+	double	old_x;
+	double	old_y;
 	double	angle;
 	int		rotation_speed;
 }	t_player;
@@ -98,7 +100,7 @@ typedef struct map_v
 	int						height;
 	uint32_t				floor;
 	uint32_t				ceiling;
-	struct minimap_v 		*minimap;
+	struct minimap_v		*minimap;
 }	t_map_e;
 
 typedef struct ray_v
@@ -144,13 +146,11 @@ typedef struct data_v
 
 typedef struct minimap_v
 {
-	int begin_x;
-	int begin_y;
-	int end_x;
-	int end_y;
-} t_minimap;
-
-
+	double	begin_i;
+	double	begin_j;
+	double	i2;
+	double	j2;
+}	t_minimap;
 void	init_all_values(t_map_e *m, t_map *data);
 void	init_textures(t_map_e *m, t_map *data);
 void	update_texture(t_wall *w, t_ray *rays, t_map_e *m);
@@ -161,17 +161,14 @@ void	move_up(t_player *p, char **mapValues);
 void	key_func(void *param);
 void	terminate_game(t_map_e *m);
 int		get_rgba(int r, int g, int b, int a);
-void	draw_block(t_map_e *m
-, int x, int y, char value, t_minimap *mini);
-uint32_t cast_to_minimap(int old_v, int o_l, int o_m, int flag);
-double cast_to_window(double old_v, int o_l, int o_m, int flag);
+double	cast_to_window(double old_v, int o_l, int o_m, int flag);
 void	apply_dda_algorithm(t_map_e *m);
-void	draw_player(t_map_e *map, t_minimap *mini);
+void	draw_player(t_map_e *map);
 void	apply_dda_algorithm(t_map_e *m);
 void	draw_3d_walls(t_map_e *m);
 void	ft_lstadd_back(t_ray **lst, t_ray *new);
 t_ray	*ft_lstnew(double x);
-void	draw_mini_map(t_map_e *m, char **data, int flag);
+void	draw_mini_map(t_map_e *m);
 int		row_empty(char *s);
 int		wall_contact(t_player *p, char **mapValues);
 void	init_player_instance(t_map_e *map3d, t_map *data);
@@ -192,7 +189,6 @@ void	update_angle(double *angle);
 long	find_min(long a, long b);
 void	ft_lstadd_a_back(t_data **lst, t_data *new);
 t_data	*ft_lstnew_ad(void *address);
-void	draw_map(t_map_e *m, char **data, int flag, t_minimap *mini);
 int		mouvement_is_blocked(char **mapValues,
 			int map_y, int map_x, double angle);
 void	init_player_position(t_player *p, int i, int j, char direction);

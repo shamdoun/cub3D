@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:27:55 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/20 17:35:48 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:59:11 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ double	find_vertical_distance(t_map_e *m, t_ray **v, double angle)
 	}
 	if (v)
 		(*v)->bitmap_offset = y_inter;
-		// (*v)->bitmap_offset = cast_to_window(y_inter, 0, m->height * BLOCK_L, 1);
 	return (calculate_magnitude(m->player, x_inter, y_inter));
 }

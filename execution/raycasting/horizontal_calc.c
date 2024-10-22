@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 22:23:50 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/20 17:38:58 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:58:56 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	allocate_cal_struc(t_ray_calc	**cal)
 		exit(1);
 }
 
-double ft_fabs(double value)
+double	ft_fabs(double value)
 {
 	if (value < 0)
 		return (value * -1);
@@ -83,6 +83,5 @@ double	find_horizontal_distance(t_map_e *m, t_ray **h, double angle)
 	}
 	if (h)
 		(*h)->bitmap_offset = x_inter;
-		// (*h)->bitmap_offset = cast_to_window(x_inter, 0, m->width * BLOCK_W, 0);
 	return (calculate_magnitude(m->player, x_inter, y_inter));
 }
