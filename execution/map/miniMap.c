@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniMap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
+/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 21:38:26 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 19:58:25 by shamdoun         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:41:48 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void	draw_pixel(t_map_e *m, int i, int j, t_minimap *mini)
 	else if (m->m_values[(int)floor(mini->j2
 				/ BLOCK_L)][(int)floor(mini->i2 / BLOCK_W)] == '0')
 		mlx_put_pixel(m->interface->new_img, (i),
-			(j), get_rgba(255, 255, 255, 255));
+			(j), get_rgba(255, 255, 0, 255));
+	else if (m->m_values[(int)floor(mini->j2
+				/ BLOCK_L)][(int)floor(mini->i2 / BLOCK_W)] == 'D')
+		mlx_put_pixel(m->interface->new_img, (i),
+			(j), get_rgba(100, 0, 250, 100));
 	else
 		mlx_put_pixel(m->interface->new_img, (i),
 			(j), get_rgba(153, 70, 54, 50));

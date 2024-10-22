@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/22 15:24:08 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:32:25 by haalouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ typedef struct player_v
 typedef struct map_v
 {
 	char					*type;
+	int						flag;
+	int						open;
 	struct mlx_v			*interface;
 	int						**map_values;
 	char					**m_values;
