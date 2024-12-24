@@ -1,7 +1,7 @@
-NO  execution/textures/_the_scream.png
-SO      execution/textures/tile3.png
-      WE        execution/textures/stone_bricks.png
-              EA       execution/textures/wood.png
+NO  execution/textures/beamskin.png
+SO      execution/textures/beamskin3.png
+      WE        execution/textures/gratewall.png
+              EA       execution/textures/steelwall6.png
 F                          220,100,0  
 
 
