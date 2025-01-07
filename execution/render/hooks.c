@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 22:13:10 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/21 19:58:59 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/07 22:12:17 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ static void	rotate_angle(t_player *p, int value)
 		p->angle += 360;
 }
 
-static void	update_map(t_map_e *m)
-{
-	mlx_delete_image(m->interface->mlx_ptr, m->interface->new_img);
-	m->interface->new_img = mlx_new_image(m->interface->mlx_ptr,
-			W_WIDTH * BLOCK_W, W_HEIGHT * BLOCK_L);
-	draw_3d_walls(m);
-	draw_mini_map(m);
-	mlx_image_to_window(m->interface->mlx_ptr, m->interface->new_img, 0, 0);
-}
-
 void	terminate_game(t_map_e *m)
 {
 	mlx_delete_image(m->interface->mlx_ptr, m->interface->new_img);
@@ -39,6 +29,18 @@ void	terminate_game(t_map_e *m)
 	free(m->interface);
 	free(m->player);
 	exit(1);
+}
+
+static void	update_map(t_map_e *m)
+{
+	mlx_delete_image(m->interface->mlx_ptr, m->interface->new_img);
+	m->interface->new_img = mlx_new_image(m->interface->mlx_ptr,
+			W_WIDTH * BLOCK_W, W_HEIGHT * BLOCK_L);
+	if (!m->interface->new_img)
+		terminate_game(m);
+	draw_3d_walls(m);
+	draw_mini_map(m);
+	mlx_image_to_window(m->interface->mlx_ptr, m->interface->new_img, 0, 0);
 }
 
 void	key_func(void *param)

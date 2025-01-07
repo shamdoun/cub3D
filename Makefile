@@ -4,13 +4,13 @@ SRCS = cub3d.c ./parssing/parssing.c ./sources/get_next_line/get_next_line.c ./p
 	execution/player/mouvements.c execution/player/player.c execution/render/render.c execution/render/hooks.c  \
  	execution/raycasting/drawing_algorithms.c execution/render/walls.c execution/render/rays.c execution/init.c \
 	execution/raycasting/horizontal_calc.c execution/map/miniMap.c execution/render/line.c execution/raycasting/vertical_calc.c execution/map/map.c 
-MLX_LIB = MLX42/build/libmlx42.a 
+MLX_LIB = /Users/shamdoun/Desktop/1337/year-1/MLX42/build/libmlx42.a
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 OBJS = ${SRCS:.c=.o}
-NAME = cub3d
+NAME = cub3D
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
 LIBFT_DIR = sources/libft
 LIBFT = $(LIBFT_DIR)/libft.a

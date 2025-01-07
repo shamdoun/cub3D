@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/21 20:05:31 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/07 22:07:09 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "sources/libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
-# include "MLX42/include/MLX42/MLX42.h"
+# include "/Users/shamdoun/Desktop/1337/year-1/MLX42/include/MLX42/MLX42.h"
 # include "parssing/parssing.h"
 
 # define BLOCK_W 64
