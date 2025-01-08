@@ -36,7 +36,8 @@ static void	start_game(t_map *data)
 }
 void f(){system("leaks cub3D");}
 int	main(int arc, char **arv)
-{atexit(f);
+{
+	// atexit(f);
 	t_map	*text;
 	
 	atexit(f);

@@ -12,24 +12,6 @@
 
 #include "../cub3d.h"
 
-int	parsse_args(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i])
-	{
-		if (str[i] == '.')
-		{
-			if (ft_strncmp(str + i, ".cub", ft_strlen(str + i)) == 0)
-				return (1);
-			return (0);
-		}
-		i++;
-	}
-	return (0);
-}
-
 void	check_f_c(char **str, t_map *textures)
 {
 	int	i;
@@ -47,34 +29,30 @@ void	continue_check_f_c(char **str, t_map *textures, char *s)
 {
 	int	j;
 	int	flag;
+	int	vergul;
 
 	j = 0;
 	flag = 0;
+	vergul = 0;
 	while (s && s[j] && s[j] != '\n')
 	{
+		if (s[j] == '-' || s[j] == '+')
+			manage_error(str, textures);
 		if (s[j] <= '9' && s[j] >= '0')
 		{
-			continue_f_c(str, textures, s, &j);
+			vergul += continue_f_c(str, textures, s, &j);
 			flag++;
 		}
 		j++;
 	}
-	if (flag != 3)
+	if (flag != 3 || vergul != 2)
 		manage_error(str, textures);
 }
 
-void	continue_f_c(char **str, t_map *textures, char *s, int *j)
+void	continue_f_c_v2(char **str, t_map *textures, char *save)
 {
-	int		start;
-	int		end;
-	int		res;
-	char	*save;
+	int	start;
 
-	start = *j;
-	while (s[*j] && s[*j] != '\n' && s[*j] != ',')
-		(*j)++;
-	end = *j - 1;
-	save = ft_copy(s, start, end);
 	start = 0;
 	while (save && save[start])
 	{
@@ -85,10 +63,34 @@ void	continue_f_c(char **str, t_map *textures, char *s, int *j)
 		}
 		start++;
 	}
+}
+
+int	continue_f_c(char **str, t_map *textures, char *s, int *j)
+{
+	int		start;
+	int		end;
+	int		res;
+	char	*save;
+	int		vergul;
+
+	start = *j;
+	vergul = 0;
+	while (s[*j] && s[*j] != '\n' && s[*j] != ',')
+	{
+		if (s[*j] == ' ' || s[*j] == '\t')
+			manage_error(str, textures);
+		(*j)++;
+	}
+	if (s[*j] == ',')
+		vergul++;
+	end = *j - 1;
+	save = ft_copy(s, start, end);
+	continue_f_c_v2(str, textures, save);
 	res = ft_atoi(save);
 	free(save);
 	if (res < 0 || res > 255)
 		manage_error(str, textures);
+	return (vergul);
 }
 
 char	*ft_copy(char *str, size_t start, size_t end)

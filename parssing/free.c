@@ -62,3 +62,21 @@ void	handele_this_error(int flag_error,
 	if (flag_error == 1 && re[0] != '\0')
 		manage_error(str, textures);
 }
+
+int	parsse_args(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == '.')
+		{
+			if (ft_strncmp(str + i, ".cub", ft_strlen(str + i)) == 0)
+				return (1);
+			return (0);
+		}
+		i++;
+	}
+	return (0);
+}
