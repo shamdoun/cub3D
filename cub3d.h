@@ -6,7 +6,7 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/22 23:51:05 by haalouan         ###   ########.fr       */
+/*   Updated: 2024/10/21 20:05:31 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "sources/libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
-# include "MLX42/include/MLX42/MLX42.h"
+# include "/Users/haalouan/Desktop/MLX42/include/MLX42/MLX42.h"
 
 
 # define BLOCK_W 64
@@ -205,10 +205,8 @@ void	free_all_exit(t_map_e *map, t_map *data);
 void	close_function(void *param);
 void	allocate_cal_struc(t_ray_calc	**cal);
 double ft_fabs(double value);
-
 int		mouvement_is_blocked_d(t_map_e *m, int map_y, int map_x, double angle);
 void	open_door(struct mlx_key_data key, void *param);
-
 int		parsse_args(char *str);
 t_map	*parssing(int arc, char **arv);
 char	**allocate_all_lines(int fd, char **arv);
