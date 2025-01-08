@@ -44,15 +44,9 @@ static t_ray	*find_distance(t_map_e *m, double a_begin)
 		v_ray = ft_lstnew(a_begin);
 		if (!v_ray)
 			exit(1);
-		m->flag = 0;
-		m->open = 0;
-		m->click = 0;
 	}
 	else
 	{
-		m->flag = 0;
-		// m->open = 0;
-		// m->click = 0;
 		h_ray->angle = a_begin;
 		v_ray->angle = a_begin;
 	}

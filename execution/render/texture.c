@@ -6,11 +6,30 @@
 /*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:13:55 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/22 15:33:28 by haalouan         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:57:22 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+static void	init_textures_2(t_map_e *m, t_map *data)
+{
+	m->all_textures[2] = mlx_load_png(data->no);
+	if (!m->all_textures[2])
+	{
+		mlx_delete_texture(m->all_textures[0]);
+		mlx_delete_texture(m->all_textures[1]);
+		free_all_exit(m, data);
+	}
+	m->all_textures[3] = mlx_load_png(data->so);
+	if (!m->all_textures[3])
+	{
+		mlx_delete_texture(m->all_textures[0]);
+		mlx_delete_texture(m->all_textures[1]);
+		mlx_delete_texture(m->all_textures[2]);
+		free_all_exit(m, data);
+	}
+}
 
 void	init_textures(t_map_e *m, t_map *data)
 {
@@ -18,13 +37,15 @@ void	init_textures(t_map_e *m, t_map *data)
 	if (!m->all_textures)
 		free_all_exit(m, data);
 	m->all_textures[0] = mlx_load_png(data->ea);
-	m->all_textures[1] = mlx_load_png(data->we);
-	m->all_textures[2] = mlx_load_png(data->no);
-	m->all_textures[3] = mlx_load_png(data->so);
-	m->all_textures[4] = mlx_load_png("textures/t2.png");
-	if (!(m->all_textures[0]) || !(m->all_textures[1])
-		|| !(m->all_textures[2]) || !(m->all_textures[3]))
+	if (!m->all_textures[0])
 		free_all_exit(m, data);
+	m->all_textures[1] = mlx_load_png(data->we);
+	if (!m->all_textures[1])
+	{
+		mlx_delete_texture(m->all_textures[0]);
+		free_all_exit(m, data);
+	}
+	init_textures_2(m, data);
 }
 
 void	update_texture(t_wall *w, t_ray *rays, t_map_e *m)

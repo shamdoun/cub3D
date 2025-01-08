@@ -22,7 +22,8 @@ int	mouvement_is_blocked(t_map_e *m, int map_y, int map_x, double angle)
 	if ((size_t)map_x >= ft_strlen(m->m_values[map_y]) - 1)
 		return (1);
 	if ((m->m_values[map_y][map_x] == '1') || (!ray_is_facing_down(angle)
-			&& ray_is_facing_left(angle) && (m->m_values[map_y][map_x + 1] == '1')
+			&& ray_is_facing_left(angle)
+				&& (m->m_values[map_y][map_x + 1] == '1')
 					&& (((map_y + 1) < h)
 					&& (map_x < ((int)ft_strlen(m->m_values[map_y + 1]))))
 					&& (m->m_values[map_y + 1][map_x] == '1')) ||

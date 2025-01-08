@@ -206,7 +206,6 @@ void	close_function(void *param);
 void	allocate_cal_struc(t_ray_calc	**cal);
 double ft_fabs(double value);
 int		mouvement_is_blocked_d(t_map_e *m, int map_y, int map_x, double angle);
-void	open_door(struct mlx_key_data key, void *param);
 int		parsse_args(char *str);
 t_map	*parssing(int arc, char **arv);
 char	**allocate_all_lines(int fd, char **arv);
