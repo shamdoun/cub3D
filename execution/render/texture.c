@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:13:55 by shamdoun          #+#    #+#             */
-/*   Updated: 2025/01/08 12:57:22 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:42:59 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,6 @@ void	update_texture(t_wall *w, t_ray *rays, t_map_e *m)
 {
 	double	angle;
 
-	if (m->flag)
-	{
-		w->t->texture = m->all_textures[3];
-		w->t->arr = (uint32_t *)w->t->texture->pixels;
-		return ;
-	}
 	angle = rays->angle;
 	update_angle(&angle);
 	if (rays->hit_vertical)

@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:53:35 by haalouan          #+#    #+#             */
-/*   Updated: 2025/01/08 21:36:16 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:41:23 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	main(int arc, char **arv)
 {
 	t_map	*text;
 
+	if (arc != 2)
+		exit (1);
 	text = parssing(arc, arv);
 	start_game(text);
 	free_map(text);
