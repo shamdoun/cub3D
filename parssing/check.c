@@ -38,6 +38,8 @@ void	continue_check_f_c(char **str, t_map *textures, char *s)
 	{
 		if (s[j] == '-' || s[j] == '+')
 			manage_error(str, textures);
+		if (s[j] == ',')
+			vergul++;
 		if (s[j] <= '9' && s[j] >= '0')
 		{
 			vergul += continue_f_c(str, textures, s, &j);
