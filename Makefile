@@ -4,7 +4,7 @@ SRCS = cub3d.c ./parssing/parssing.c ./sources/get_next_line/get_next_line.c ./p
 	execution/player/mouvements.c execution/player/player.c execution/render/render.c execution/render/hooks.c  \
  	execution/raycasting/drawing_algorithms.c execution/render/walls.c execution/render/rays.c execution/init.c \
 	execution/raycasting/horizontal_calc.c execution/map/miniMap.c execution/render/line.c execution/raycasting/vertical_calc.c execution/map/map.c 
-MLX_LIB = /Users/haalouan/Desktop/MLX42/build/libmlx42.a
+MLX_LIB = /Users/shamdoun/Desktop/1337/year-1/MLX42/build/libmlx42.a
 MLX_FLAGS = -framework Cocoa -framework OpenGL -framework IOKit
 OBJS = ${SRCS:.c=.o}
 NAME = cub3D
@@ -16,7 +16,7 @@ LIBFT_DIR = sources/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 $(NAME): $(OBJS) $(LIBFT)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ${MLX_FLAGS} ${MLX_LIB} -Iinclude -lglfw -L"/Users/haalouan/.brew/opt/glfw/lib/" -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) ${MLX_FLAGS} ${MLX_LIB} -Iinclude -lglfw -L "/Users/shamdoun/.brew/opt/glfw/lib/" -o $(NAME)
 	@echo "Cub3d is ready"
 
 all: ${NAME}
@@ -30,7 +30,7 @@ $(LIBFT):
 clean:
 	@${RM} ${OBJS}
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@echo "Cub3d is cleaned"
+	@echo "Cub3D is cleaned"
 	@echo "Libft is cleaned"
 
 fclean: clean

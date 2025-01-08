@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:53:35 by haalouan          #+#    #+#             */
-/*   Updated: 2025/01/08 12:58:22 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:36:16 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ static void	start_game(t_map *data)
 	free(map);
 	ft_malloc(0, 1);
 }
-void f(){system("leaks cub3D");}
+
 int	main(int arc, char **arv)
 {
-	// atexit(f);
 	t_map	*text;
-	
-	atexit(f);
+
 	text = parssing(arc, arv);
 	start_game(text);
 	free_map(text);

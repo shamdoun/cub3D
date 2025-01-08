@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 19:29:42 by shamdoun          #+#    #+#             */
-/*   Updated: 2024/10/22 22:21:48 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:34:52 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	init_player_instance(t_map_e *map3d, t_map *data)
 			k = ft_strlen(data->map[i]);
 			while (++j < k && j < map3d->width)
 			{
-				if (ft_isalpha(data->map[i][j])
-					&& (data->map[i][j] != 'D'))
+				if (ft_isalpha(data->map[i][j]))
 				{
 					init_player_position(map3d->player, i, j, data->map[i][j]);
 					data->map[i][j] = '0';

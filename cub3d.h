@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/21 20:05:31 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/08 21:37:45 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 # include "sources/libft/libft.h"
 # include <stdlib.h>
 # include <math.h>
-# include "/Users/haalouan/Desktop/MLX42/include/MLX42/MLX42.h"
-
+# include "/Users/shamdoun/Desktop/1337/year-1/MLX42/include/MLX42/MLX42.h"
 
 # define BLOCK_W 64
 # define BLOCK_L 64
@@ -204,7 +203,7 @@ void	render_wall(t_map_e *m, t_ray *ray, t_wall *w, int x);
 void	free_all_exit(t_map_e *map, t_map *data);
 void	close_function(void *param);
 void	allocate_cal_struc(t_ray_calc	**cal);
-double ft_fabs(double value);
+double	ft_fabs(double value);
 int		mouvement_is_blocked_d(t_map_e *m, int map_y, int map_x, double angle);
 int		parsse_args(char *str);
 t_map	*parssing(int arc, char **arv);
@@ -247,7 +246,8 @@ void	continue_check_f_c(char **str, t_map *textures, char *s);
 int		continue_f_c(char **str, t_map *textures, char *s, int *j);
 char	*ft_copy(char *str, size_t start, size_t end);
 void	double_check(char **str, t_map *textures, int i);
-void	handele_this_error(int flag_error, char *re, char **str, t_map *textures);
+void	handele_this_error(int flag_error,
+			char *re, char **str, t_map *textures);
 void	continue_f_c_v2(char **str, t_map *textures, char *save);
 
 #endif
