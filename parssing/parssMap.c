@@ -85,13 +85,9 @@ void	check_empty_line(char **all_lines, t_map *textures)
 	while (textures->map && textures->map[i])
 	{
 		k = 0;
-		if (textures->map[i][k] && (textures->map[i][k] == ' '
+		while (textures->map[i][k] && (textures->map[i][k] == ' '
 			|| textures->map[i][k] == '\t'))
-		{
-			while (textures->map[i][k] && (textures->map[i][k] == ' '
-				|| textures->map[i][k] == '\t'))
-				k++;
-		}
+			k++;
 		while (textures->map[i] && textures->map[i][k])
 		{
 			protecte_map(all_lines, textures, i, k);
@@ -113,11 +109,12 @@ void	parsse_map(char **all_lines, t_map *textures)
 	i = 0;
 	while (textures->map && textures->map[0] && textures->map[0][i])
 	{
-		if (textures->map[0][i] != '1')
+		if (textures->map[0][i] != '1' && textures->map[0][i] != ' '
+			&& textures->map[0][i] != '\t')
 		{
 			free_all_lines(all_lines);
 			free_map(textures);
-			exit(printf("invalid map (open map)\n"));
+			exit(printf("ERROR IN MAP\n"));
 		}
 		i++;
 	}

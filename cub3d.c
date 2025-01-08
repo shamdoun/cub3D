@@ -34,9 +34,9 @@ static void	start_game(t_map *data)
 	free(map);
 	ft_malloc(0, 1);
 }
-
+void f(){system("leaks cub3d");}
 int	main(int arc, char **arv)
-{
+{atexit(f);
 	t_map	*text;
 
 	text = parssing(arc, arv);

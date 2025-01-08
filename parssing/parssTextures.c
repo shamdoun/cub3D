@@ -26,15 +26,14 @@ void	put_so(char **str, t_map *textures)
 		str[i] = escape_spaces(str[i]);
 		if (ft_strncmp(str[i], "SO", 2) == 0)
 		{
-			if (str[i][2] != ' ' && str[i][2] != '\t')
-				manage_error(str, textures);
+			double_check(str, textures, i);
 			flag++;
 			save = i;
 		}
 		i++;
 	}
 	if (flag != 1)
-		exit(printf("ERROR IN MAP (SO)\n"));
+		exit(printf("ERROR IN MAP\n"));
 	if (flag == 1)
 	{
 		str[save] = escape_spaces(str[save]);

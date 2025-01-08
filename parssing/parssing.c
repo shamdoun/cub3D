@@ -21,7 +21,7 @@ t_map	*parssing(int arc, char **arv)
 
 	(void)arc;
 	i = 0;
-	if (parsse_args(arv[1]) == 0)
+	if (parsse_args(arv[1]) != 1)
 		exit(printf("Error in ARGS\n"));
 	fd = open(arv[1], O_RDONLY);
 	if (fd < 0)
@@ -30,7 +30,6 @@ t_map	*parssing(int arc, char **arv)
 	all_lines = parsse_all_lines(all_lines);
 	textures = allocate_textures();
 	parsse_textures(all_lines, textures);
-	// exit(1);
 	parsse_map(all_lines, textures);
 	free_all_lines(all_lines);
 	return (textures);
@@ -51,6 +50,12 @@ char	**parsse_all_lines(char **str)
 	check_map(str);
 	free_all_lines(str);
 	return (s);
+}
+
+void	free_and_exit(char **str)
+{
+	free_all_lines(str);
+	exit(printf("ERROR IN MAP\n"));
 }
 
 void	check_map(char **str)
@@ -75,10 +80,7 @@ void	check_map(char **str)
 			&& ft_strncmp(str[i] + k, "F", 1) != 0
 			&& str[i][k] != '1' && str[i][k] != '\n'
 			&& str[i][k] != ' ' && str[i][k] != '\t')
-		{
-			free_all_lines(str);
-			exit(printf("ERROR IN MAP\n"));
-		}
+			free_and_exit(str);
 		i++;
 	}
 }

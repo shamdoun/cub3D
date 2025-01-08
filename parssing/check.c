@@ -38,7 +38,7 @@ void	check_f_c(char **str, t_map *textures)
 	while (str && str[i])
 	{
 		if (str[i][0] == 'C' || str[i][0] == 'F')
-			continue_check_f_c(str, textures, str[i]);	
+			continue_check_f_c(str, textures, str[i]);
 		i++;
 	}
 }
@@ -57,10 +57,10 @@ void	continue_check_f_c(char **str, t_map *textures, char *s)
 			continue_f_c(str, textures, s, &j);
 			flag++;
 		}
-		if (flag > 3)
-			manage_error(str, textures);
 		j++;
 	}
+	if (flag != 3)
+		manage_error(str, textures);
 }
 
 void	continue_f_c(char **str, t_map *textures, char *s, int *j)
@@ -69,7 +69,7 @@ void	continue_f_c(char **str, t_map *textures, char *s, int *j)
 	int		end;
 	int		res;
 	char	*save;
-	
+
 	start = *j;
 	while (s[*j] && s[*j] != '\n' && s[*j] != ',')
 		(*j)++;
@@ -93,22 +93,22 @@ void	continue_f_c(char **str, t_map *textures, char *s, int *j)
 
 char	*ft_copy(char *str, size_t start, size_t end)
 {
-    int		len;
-    char	*new_str;
-	int		i;	
-	
+	int		len;
+	char	*new_str;
+	int		i;
+
 	len = end - start + 1;
 	new_str = (char *)malloc(sizeof(char) * (len + 1));
-    if (!new_str)
+	if (!new_str)
 	{
-        exit(EXIT_FAILURE);
-    }
-    i = 0;
-    while (i < len)
+		exit(EXIT_FAILURE);
+	}
+	i = 0;
+	while (i < len)
 	{
-        new_str[i] = str[start + i];
-        i++;
-    }
-    new_str[len] = '\0';
-    return (new_str);
+		new_str[i] = str[start + i];
+		i++;
+	}
+	new_str[len] = '\0';
+	return (new_str);
 }

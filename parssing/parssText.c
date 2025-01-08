@@ -23,7 +23,8 @@ void	put_c(char **str, t_map *textures)
 	while (str && str[i] && str[i][0] != '1')
 	{
 		str[i] = escape_spaces(str[i]);
-		if (ft_strncmp(str[i], "C", 1) == 0 && (str[i][1] == ' ' || str[i][1] == '\t'))
+		if (ft_strncmp(str[i], "C", 1) == 0 && (str[i][1] == ' '
+			|| str[i][1] == '\t'))
 		{
 			flag++;
 			save = i;
@@ -44,18 +45,24 @@ void	put_0_1(char **str, t_map *textures)
 	int		i;
 	char	*save;
 	char	*re;
+	int		flag_error;
 	int		k;
 
 	i = 0;
 	k = 0;
+	flag_error = 0;
 	i = check_map_valid(str);
 	textures->map = allocate_map(count_map(str + i));
 	while (str && str[i])
 	{
 		save = ft_strdup(str[i]);
 		re = ft_strtrim(save, "\n");
+		if (re[0] == '\0')
+			flag_error = 1;
 		free(save);
-		textures->map[k] = ft_strdup(re);
+		if (flag_error == 0)
+			textures->map[k] = ft_strdup(re);
+		handele_this_error(flag_error, re, str, textures);
 		free(re);
 		k++;
 		i++;

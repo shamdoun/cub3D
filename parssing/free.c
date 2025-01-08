@@ -49,3 +49,16 @@ void	free_map(t_map *Map)
 	if (Map)
 		free(Map);
 }
+
+void	double_check(char **str, t_map *textures, int i)
+{
+	if (str[i][2] != ' ' && str[i][2] != '\t')
+		manage_error(str, textures);
+}
+
+void	handele_this_error(int flag_error,
+	char *re, char **str, t_map *textures)
+{
+	if (flag_error == 1 && re[0] != '\0')
+		manage_error(str, textures);
+}

@@ -249,5 +249,7 @@ void	check_f_c(char **str, t_map *textures);
 void	continue_check_f_c(char **str, t_map *textures, char *s);
 void	continue_f_c(char **str, t_map *textures, char *s, int *j);
 char	*ft_copy(char *str, size_t start, size_t end);
+void	double_check(char **str, t_map *textures, int i);
+void	handele_this_error(int flag_error, char *re, char **str, t_map *textures);
 
 #endif
