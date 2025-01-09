@@ -27,4 +27,5 @@ int		ft_isalpha(int c);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *str);
 int		absolute_value(int a);
+char	**copy(char **str);
 #endif

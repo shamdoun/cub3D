@@ -96,3 +96,21 @@ t_map	*allocate_textures(void)
 	textures->we = NULL;
 	return (textures);
 }
+
+int	check_if_reach_map(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] && str[i][0] != '1')
+	{
+		if (ft_strncmp(str[i], "NO", 2) == 0 || ft_strncmp(str[i], "SO", 2) == 0
+			|| ft_strncmp(str[i], "WE", 2) == 0
+			|| ft_strncmp(str[i], "EA", 2) == 0
+			|| ft_strncmp(str[i], "F", 1) == 0
+			|| ft_strncmp(str[i], "C", 1) == 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}

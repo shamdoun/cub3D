@@ -6,7 +6,7 @@
 /*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 10:52:54 by haalouan          #+#    #+#             */
-/*   Updated: 2025/01/08 21:37:45 by shamdoun         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:04:52 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,7 +228,7 @@ void	protecte_map(char **all_lines, t_map *textures, int i, int k);
 void	check_empty_line(char **all_lines, t_map *textures);
 void	parsse_map(char **all_lines, t_map *textures);
 void	check_dup(char **all_lines, t_map *textures);
-void	manage_error(char **str, t_map *textures);
+void	manage_error(char **str, t_map *textures, char **save_str);
 void	put_c(char **str, t_map *textures);
 void	put_0_1(char **str, t_map *textures);
 void	parsse_textures(char **str, t_map *textures);
@@ -249,5 +249,5 @@ void	double_check(char **str, t_map *textures, int i);
 void	handele_this_error(int flag_error,
 			char *re, char **str, t_map *textures);
 void	continue_f_c_v2(char **str, t_map *textures, char *save);
-
+int		check_if_reach_map(char **str);
 #endif

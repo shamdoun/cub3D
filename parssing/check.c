@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 15:18:29 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/20 20:18:34 by haalouan         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:16:35 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 void	check_f_c(char **str, t_map *textures)
 {
-	int	i;
+	int		i;
+	char	**save_str;
 
 	i = 0;
+	save_str = copy(str);
 	while (str && str[i])
 	{
-		if (str[i][0] == 'C' || str[i][0] == 'F')
-			continue_check_f_c(str, textures, str[i]);
+		save_str[i] = escape_spaces(save_str[i]);
+		if (save_str[i][0] == 'C' || save_str[i][0] == 'F')
+			continue_check_f_c(save_str, textures, save_str[i]);
 		i++;
 	}
+	free_all_lines(save_str);
 }
 
 void	continue_check_f_c(char **str, t_map *textures, char *s)
@@ -37,7 +41,7 @@ void	continue_check_f_c(char **str, t_map *textures, char *s)
 	while (s && s[j] && s[j] != '\n')
 	{
 		if (s[j] == '-' || s[j] == '+')
-			manage_error(str, textures);
+			manage_error(str, textures, NULL);
 		if (s[j] == ',')
 			vergul++;
 		if (s[j] <= '9' && s[j] >= '0')
@@ -48,7 +52,7 @@ void	continue_check_f_c(char **str, t_map *textures, char *s)
 		j++;
 	}
 	if (flag != 3 || vergul != 2)
-		manage_error(str, textures);
+		manage_error(str, textures, NULL);
 }
 
 void	continue_f_c_v2(char **str, t_map *textures, char *save)
@@ -61,7 +65,7 @@ void	continue_f_c_v2(char **str, t_map *textures, char *save)
 		if (save[start] > '9' || save[start] < '0')
 		{
 			free(save);
-			manage_error(str, textures);
+			manage_error(str, textures, NULL);
 		}
 		start++;
 	}
@@ -80,7 +84,7 @@ int	continue_f_c(char **str, t_map *textures, char *s, int *j)
 	while (s[*j] && s[*j] != '\n' && s[*j] != ',')
 	{
 		if (s[*j] == ' ' || s[*j] == '\t')
-			manage_error(str, textures);
+			manage_error(str, textures, NULL);
 		(*j)++;
 	}
 	if (s[*j] == ',')
@@ -91,7 +95,7 @@ int	continue_f_c(char **str, t_map *textures, char *s, int *j)
 	res = ft_atoi(save);
 	free(save);
 	if (res < 0 || res > 255)
-		manage_error(str, textures);
+		manage_error(str, textures, NULL);
 	return (vergul);
 }
 

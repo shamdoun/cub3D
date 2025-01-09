@@ -94,6 +94,7 @@ int	check_map_valid(char **str)
 	while (str && str[i])
 	{
 		save = ft_strtrim(str[i], "\n");
+		save = escape_spaces(save);
 		if (save[0] == '1')
 		{
 			free(save);

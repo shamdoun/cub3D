@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parssText.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haalouan <haalouan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shamdoun <shamdoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:43:56 by haalouan          #+#    #+#             */
-/*   Updated: 2024/10/16 18:06:20 by haalouan         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:16:52 by shamdoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,31 @@
 
 void	put_c(char **str, t_map *textures)
 {
-	int	i;
-	int	save;
-	int	flag;
+	int		i;
+	int		save;
+	int		flag;
+	char	**save_str;
 
 	i = 0;
 	flag = 0;
+	save_str = copy(str);
 	while (str && str[i] && str[i][0] != '1')
 	{
-		str[i] = escape_spaces(str[i]);
-		if (ft_strncmp(str[i], "C", 1) == 0 && (str[i][1] == ' '
-			|| str[i][1] == '\t'))
+		save_str[i] = escape_spaces(save_str[i]);
+		if (ft_strncmp(save_str[i], "C", 1) == 0)
 		{
+			if (save_str[i][1] != ' ' && save_str[i][1] != '\t')
+				manage_error(str, textures, save_str);
 			flag++;
 			save = i;
 		}
 		i++;
 	}
 	if (flag != 1)
-		manage_error(str, textures);
-	if (flag == 1)
-	{
-		str[save] = escape_spaces(str[save]);
-		textures->c = put_map(str[save], 1);
-	}
+		manage_error(str, textures, save_str);
+	save_str[save] = escape_spaces(save_str[save]);
+	textures->c = put_map(save_str[save], 1);
+	free_all_lines(save_str);
 }
 
 void	put_0_1(char **str, t_map *textures)

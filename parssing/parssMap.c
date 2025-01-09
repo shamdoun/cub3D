@@ -15,27 +15,27 @@
 void	check_valid_for0(char **all_lines, t_map *textures, int i, int k)
 {
 	if (textures->map[i][k + 1] == '\0')
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 	if (k < (int)ft_strlen(textures->map[i + 1]))
 	{
 		if (textures->map[i + 1][k] != '1' && textures->map[i + 1][k] != '0'
 			&& textures->map[i + 1][k] != 'E' && textures->map[i + 1][k] != 'S'
 			&& textures->map[i + 1][k] != 'W' && textures->map[i + 1][k] != 'N'
 			&& textures->map[i + 1][k] != 'D')
-			manage_error(all_lines, textures);
+			manage_error(all_lines, textures, NULL);
 	}
 	else
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 	if (k < (int)ft_strlen(textures->map[i - 1]))
 	{
 		if (textures->map[i - 1][k] != '1' && textures->map[i - 1][k] != '0'
 			&& textures->map[i - 1][k] != 'E' && textures->map[i - 1][k] != 'S'
 			&& textures->map[i - 1][k] != 'W' && textures->map[i - 1][k] != 'N'
 			&& textures->map[i - 1][k] != 'D')
-			manage_error(all_lines, textures);
+			manage_error(all_lines, textures, NULL);
 	}
 	else
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 }
 
 void	check_end_line(char **all_lines, t_map *textures, int k)
@@ -47,7 +47,7 @@ void	check_end_line(char **all_lines, t_map *textures, int k)
 		i++;
 	if (textures->map[k][i - 1] == 'E' || textures->map[k][i - 1] == 'N'
 		|| textures->map[k][i - 1] == 'W' || textures->map[k][i - 1] == 'S')
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 }
 
 void	check_valid_for_player(char **all_lines, t_map *textures, int i, int k)
@@ -55,23 +55,23 @@ void	check_valid_for_player(char **all_lines, t_map *textures, int i, int k)
 	check_end_line(all_lines, textures, i);
 	if (textures->map[i][k + 1] == ' ' || textures->map[i][k + 1] == '\t'
 		|| textures->map[i][k - 1] == ' ' || textures->map[i][k - 1] == '\t')
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 	if (k < (int)ft_strlen(textures->map[i + 1]))
 	{
 		if (textures->map[i + 1] && textures->map[i + 1][k] != '1'
-			&& textures->map[i + 1][k] != '0' && textures->map[i + 1][k] != 'D')
-			manage_error(all_lines, textures);
+			&& textures->map[i + 1][k] != '0')
+			manage_error(all_lines, textures, NULL);
 	}
 	else
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 	if (k < (int)ft_strlen(textures->map[i - 1]))
 	{
 		if (textures->map[i - 1] && textures->map[i - 1][k] != '1'
-			&& textures->map[i - 1][k] != '0' && textures->map[i - 1][k] != 'D')
-			manage_error(all_lines, textures);
+			&& textures->map[i - 1][k] != '0')
+			manage_error(all_lines, textures, NULL);
 	}
 	else
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 }
 
 void	check_empty_line(char **all_lines, t_map *textures)

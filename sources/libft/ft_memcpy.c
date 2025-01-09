@@ -32,3 +32,25 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
+
+char	**copy(char **str)
+{
+	char	**s;
+	int		i;
+
+	s = NULL;
+	i = 0;
+	while (str && str[i])
+		i++;
+	s = (char **)malloc(sizeof(char *) * (i + 1) + 1);
+	if (!s)
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (str && str[i])
+	{
+		s[i] = ft_strdup(str[i]);
+		i++;
+	}
+	s[i] = NULL;
+	return (s);
+}

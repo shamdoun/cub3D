@@ -40,8 +40,10 @@ int	count_map(char **str)
 	return (i);
 }
 
-void	manage_error(char **str, t_map *textures)
+void	manage_error(char **str, t_map *textures, char **save_str)
 {
+	if (save_str)
+		free_all_lines(save_str);
 	free_all_lines(str);
 	free_map(textures);
 	exit(printf("ERROR IN MAP\n"));
@@ -54,7 +56,7 @@ void	protecte_map(char **all_lines, t_map *textures, int i, int k)
 		&& textures->map[i][k] != 'S' && textures->map[i][k] != 'W'
 		&& textures->map[i][k] != ' ' && textures->map[i][k] != '\t'
 		&& textures->map[i][k] != 'D')
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 }
 
 void	check_dup(char **all_lines, t_map *textures)
@@ -78,5 +80,5 @@ void	check_dup(char **all_lines, t_map *textures)
 		i++;
 	}
 	if (flag != 1)
-		manage_error(all_lines, textures);
+		manage_error(all_lines, textures, NULL);
 }
